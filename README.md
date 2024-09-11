@@ -72,14 +72,14 @@ KatFit is primarily designed for my personal use. As the sole user, I will utili
 
 ### Mockups
 
-![alt text](img1-homePage.jpeg)
-![alt text](img2-homePage.jpeg)
-![alt text](img1-dayPage.jpeg)
-![alt text](img2-dayPage.jpeg)
+![alt text](./src/assets/img1-homePage.jpeg)
+![alt text](./src/assets/img2-homePage.jpeg)
+![alt text](./src/assets/img1-dayPage.jpeg)
+![alt text](./src/assets/img2-dayPage.jpeg)
 
 ### Data
 
-![alt text](sql-diagram.png)
+![alt text](./src/assets/sql-diagram.png)
 
 ### Endpoints
 
