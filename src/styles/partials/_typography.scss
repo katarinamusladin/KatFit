@@ -1,3 +1,6 @@
+@use './variables' as *;
+@use './mixins' as *;
+
 @font-face {
   font-family: "Avenir Next";
   src: url("../../assets/fonts/AvenirNextLTPro-Regular.woff") format("woff2"),
