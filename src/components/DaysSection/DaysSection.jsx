@@ -33,7 +33,7 @@ export default function DaysSection() {
                   key={day.id}
                   src={`/images/${day.image}`}
                   text={day.target_area}
-                  label={`DAY ${day.id}`}
+                  label= {day.name}
                   path={`/day/${day.id}`}
                 />
               ))}
