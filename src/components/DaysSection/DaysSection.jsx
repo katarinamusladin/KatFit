@@ -1,8 +1,26 @@
 import SingleDay from "../SingleDay/SingleDay";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./DaysSection.scss";
-import Image from "../../assets/images/image1.jpg";
-
+const API_URL = `${import.meta.env.VITE_BASE_URL}:${
+  import.meta.env.VITE_PORT
+}/days`;
 export default function DaysSection() {
+  const [days, setDays] = useState([]);
+
+  useEffect(() => {
+    async function fetchDays() {
+      try {
+        const response = await axios.get(API_URL);
+        setDays(response.data);
+      } catch (error) {
+        console.error("Error fetching days:", error);
+      }
+    }
+
+    fetchDays();
+  }, []);
+
   return (
     <>
       <div className="cards">
@@ -10,37 +28,15 @@ export default function DaysSection() {
         <div className="cards__container">
           <div className="cards__wrapper">
             <ul className="cards__items">
-              <SingleDay
-                src={Image}
-                text="LEGS"
-                label="DAY 1"
-                path="/"
-              />
-              <SingleDay
-                src={Image}
-                text="UPPER"
-                label="DAY 2"
-                path="/"
-              />
-
-              <SingleDay
-                src={Image}
-                text="GLUTES"
-                label="DAY 3"
-                path="/"
-              />
-              <SingleDay
-                src={Image}
-                text="HIIT CARDIO"
-                label="DAY 4"
-                path="/"
-              />
-              <SingleDay
-                src={Image}
-                text="FULL BODY"
-                label="DAY 5"
-                path="/"
-              />
+              {days.map((day) => (
+                <SingleDay
+                  key={day.id}
+                  src={`/images/${day.image}`}
+                  text={day.target_area}
+                  label={`DAY ${day.id}`}
+                  path={`/day/${day.id}`}
+                />
+              ))}
             </ul>
           </div>
         </div>
