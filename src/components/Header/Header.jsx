@@ -47,7 +47,7 @@ function Header() {
             </li>
             <li className="navbar__item">
               <Link to="/" className="navbar__links" onClick={closeMobileMenu}>
-                DAYS
+                Schedule
               </Link>
             </li>
             <li className="navbar__item">

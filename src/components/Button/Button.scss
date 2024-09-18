@@ -2,47 +2,47 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
 
-
-:root {
-  --primary: #fff;
-}
-
 .btn {
   padding: 0.5rem 1.25rem;
   border-radius: 0.125rem;
   outline: none;
   border: none;
   cursor: pointer;
-}
 
-.btn--primary {
-  background-color: var(--primary);
-  color: #242424;
-  border: 1px solid var(--primary);
-}
+  &--primary {
+    background-color: $white;
+    color: $dark-grey;
+    border: 1px solid $white;
+  }
 
-.btn--outline {
-  background-color: transparent;
-  color: #fff;
-  padding: 0.5rem 1.25rem;
-  border: 1px solid var(--primary);
-  transition: all 0.3s ease-out;
-}
+  &--outline {
+    background-color: transparent;
+    color: $white;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid $white;
+    transition: all 0.3s ease-out;
+  }
 
-.btn--medium {
-  padding: 0.5rem 1.25rem;
-  font-size: 1.125rem;
-}
+  &--medium {
+    padding: 0.5rem 1.25rem;
+    font-size: 1.125rem;
+  }
 
-.btn--large {
-  padding: 0.75rem 1.625rem;
-  font-size: 1.25rem;
-}
+  &--large {
+    padding: 0.75rem 1.625rem;
+    font-size: 1.25rem;
 
-.btn--large:hover,
-.btn--medium:hover {
-  transition: all 0.3s ease-out;
-  background: #fff;
-  color: #242424;
-  transition: 250ms;
+    &:hover {
+      transition: all 0.3s ease-out;
+      background: $white;
+      color: $dark-grey;
+    }
+  }
+
+  &:hover {
+    transition: all 0.3s ease-out;
+    background: $white;
+    color: $dark-grey;
+    transition: 250ms;
+  }
 }
