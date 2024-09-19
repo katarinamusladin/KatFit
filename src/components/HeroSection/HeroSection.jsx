@@ -1,18 +1,24 @@
 import { Button } from "../Button/Button";
 import './HeroSection.scss';
 import '../../App.scss';
-import video from "../../assets/videos/video-2.mp4";
 
 
-export default function HeroSection(){
+export default function HeroSection( { heading, text, mediaSrc, isVideo, onButtonClick } ){
   return (
     <div className="hero">
-      <video className="hero__video" src={video} autoPlay loop muted />
-      <h1 className="hero__heading">STRONGER EVERY DAY</h1>
-      <p className="hero__text">Consistency is the key</p>
+      {isVideo ? (
+        <video className="hero__video" src={mediaSrc} autoPlay loop muted />
+      ) : (
+        <img className="hero__image" src={mediaSrc} alt={heading} />
+      )}
+      <h1 className="hero__heading">{heading}</h1>
+      <p className="hero__text">{text}</p>
       <div className="hero__buttons">
-        <Button className="btns" buttonStyle='btn--outline' buttonSize="btn--large">
-          GET STARTED
+        <Button className="btns" buttonStyle='btn--outline' buttonSize="btn--large" onClick={(e) => {
+            e.preventDefault();
+            onButtonClick();
+          }}>
+          BEGIN NOW
         </Button>
       </div>
      

@@ -1,0 +1,244 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.exercise-list {
+  padding: 1.25rem;
+  background-color: $header-light;
+  text-align: center;
+  position: relative;
+
+  &__title {
+    margin-bottom: 1.25rem;
+    font-size: 1.5rem;
+  }
+  &__button {
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 1.25rem;
+    background-color: $header;
+    color: $white;
+    font-size: .875rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 90%;
+
+    &:hover {
+      background-color: $white;
+      border: .125rem solid $header;
+      color: $header;
+    }
+  }
+
+  &__slider {
+    position: relative;
+    overflow: hidden;
+
+    .slick-slide {
+      display: flex;
+      justify-content: center;
+      padding: .625rem;
+      margin-bottom: 1rem;
+
+      @include tablet {
+        margin: 80px;
+      }
+    }
+
+    .slick-track {
+      display: flex;
+      align-items: center;
+    }
+
+    .slick-dots {
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      right: 0;
+      width: 100%;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: inline-block;
+        margin: 0 .3125rem;
+      }
+
+      button {
+        background-color: $light-pink;
+        border-radius: 50%;
+        width: .625rem;
+        height: .625rem;
+        padding: 0;
+        margin: 0;
+
+        &:before {
+          font-size: 0;
+        }
+      }
+
+      .slick-active button {
+        background-color: $header;
+      }
+    }
+
+    @include tablet {
+      display: block;
+      .slick-slide {
+        flex: 1;
+      }
+      .slick-track,
+      .slick-dots {
+        display: none;
+      }
+    }
+
+    @include desktop {
+      display: block;
+      .slick-slide {
+        flex: 1;
+      }
+      .slick-track,
+      .slick-dots {
+        display: none;
+      }
+    }
+  }
+
+  &__card {
+    background-color: $white;
+    border: .0625rem solid $border-color;
+    border-radius: 1.25rem;
+    padding: .625rem;
+    width: 25%;
+    box-shadow: 0 .25rem .5rem rgba($header, 0.3);
+    text-align: left;
+    position: relative;
+    margin: .625rem .625rem;
+
+    @include tablet {
+      width: 40%;
+    }
+
+    @include desktop {
+      width: 30%;
+    }
+  }
+
+  &__image-container {
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 1.25rem;
+    margin-bottom: .625rem;
+  }
+
+  &__info-icon {
+    position: absolute;
+    top: -0.1875rem;
+    right: -0.1875rem;
+    width: 1.8125rem;
+    height: 1.8125rem;
+    background-color: $header;
+    color: $white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .875rem;
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+      background-color: $white;
+      color: $header;
+    }
+  }
+
+  &__workout-title {
+    font-size: 1rem;
+    margin-bottom: .625rem;
+    color: $dark-grey;
+  }
+
+  &__inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: .625rem;
+    margin-bottom: .9375rem;
+  }
+
+  &__input-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__input-label {
+    font-size: .75rem;
+    margin-bottom: .3125rem;
+  }
+
+  &__input {
+    padding: .375rem;
+    border: .125rem solid $header;
+    border-radius: 1.25rem;
+    font-size: .75rem;
+    width: 50%;
+  }
+
+  &__status-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__completed-status {
+    display: flex;
+    align-items: center;
+    font-size: .75rem;
+
+    &__label {
+      margin-right: .3125rem;
+      color: red;
+    }
+
+    &__checkmark {
+      color: red;
+      font-size: 1rem;
+    }
+  }
+
+  &__save-button {
+    text-align: center;
+    padding-top: 16px;
+
+    &__button {
+      padding: .5rem 1rem;
+      border: none;
+      border-radius: 1.25rem;
+      background-color: $header;
+      color: $white;
+      font-size: .875rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 90%;
+
+      &:hover {
+        background-color: $white;
+        border: .125rem solid $header;
+        color: $header;
+      }
+    }
+  }
+
+  &__flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

@@ -1,11 +1,11 @@
 import SingleDay from "../SingleDay/SingleDay";
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import axios from "axios";
 import "./DaysSection.scss";
 const API_URL = `${import.meta.env.VITE_BASE_URL}:${
   import.meta.env.VITE_PORT
 }/days`;
-export default function DaysSection() {
+const DaysSection = forwardRef((props, ref) => {
   const [days, setDays] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function DaysSection() {
 
   return (
     <>
-      <div className="cards">
+      <div ref={ref} className="cards">
         <h1 className="cards__title">5 DAY WORKOUT PLANNER</h1>
         <div className="cards__container">
           <div className="cards__wrapper">
@@ -43,4 +43,8 @@ export default function DaysSection() {
       </div>
     </>
   );
-}
+
+});
+
+export default DaysSection;
+
