@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
 import "./Header.scss";
-
+import flowerIcon from "../../assets/images/flower.png";
 function Header() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -30,7 +30,7 @@ function Header() {
         <div className="navbar__container">
           <Link to="/" className="navbar__logo" onClick={closeMobileMenu}>
             KatFit
-            {/* <i class='fas fa-typo3' /> */}
+            <img src={flowerIcon} alt="Flower icon" className="navbar__flower-icon" />
           </Link>
           <div className="navbar__menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />

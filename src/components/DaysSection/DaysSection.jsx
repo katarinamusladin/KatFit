@@ -24,7 +24,7 @@ const DaysSection = forwardRef((props, ref) => {
   return (
     <>
       <div ref={ref} className="cards">
-        <h1 className="cards__title">5 DAY WORKOUT PLANNER</h1>
+        <h1 className="cards__title">5 Day Workout Planner</h1>
         <div className="cards__container">
           <div className="cards__wrapper">
             <ul className="cards__items">

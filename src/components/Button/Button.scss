@@ -13,6 +13,7 @@
     background-color: $white;
     color: $dark-grey;
     border: 1px solid $white;
+    
   }
 
   &--outline {
@@ -21,6 +22,7 @@
     padding: 0.5rem 1.25rem;
     border: 1px solid $white;
     transition: all 0.3s ease-out;
+    
   }
 
   &--medium {
@@ -42,7 +44,8 @@
   &:hover {
     transition: all 0.3s ease-out;
     background: $white;
-    color: $dark-grey;
+    color: $header;
     transition: 250ms;
+    font-weight: 600;
   }
 }

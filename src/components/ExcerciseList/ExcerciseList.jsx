@@ -113,7 +113,7 @@ const ExcerciseList = ({ exercises }) => {
           <input
             type="number"
             id={`weights-${exercise.id}`}
-            placeholder="Enter weight"
+            placeholder="Weight"
             name="weights"
             value={exercise.weights || ""}
             onChange={(e) => handleChange(e, exercise.id)}
