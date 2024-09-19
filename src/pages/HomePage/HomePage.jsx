@@ -20,7 +20,7 @@ function HomePage(){
     <HeroSection 
         onButtonClick={scrollToDays}
         heading="STRONGER EVERY DAY" 
-        text="Consistency is the key" 
+        text="Kate, you got this!" 
         mediaSrc={video} 
         isVideo={true} 
       />

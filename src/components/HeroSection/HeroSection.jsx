@@ -18,7 +18,7 @@ export default function HeroSection( { heading, text, mediaSrc, isVideo, onButto
             e.preventDefault();
             onButtonClick();
           }}>
-          BEGIN NOW
+          START NOW
         </Button>
       </div>
      

@@ -6,7 +6,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const API_URL = `${import.meta.env.VITE_BASE_URL}:${import.meta.env.VITE_PORT}/days`;
+const API_URL = `${import.meta.env.VITE_BASE_URL}:${
+  import.meta.env.VITE_PORT
+}/days`;
 
 const ExcerciseList = ({ exercises }) => {
   const [exerciseData, setExerciseData] = useState(exercises);
@@ -63,9 +65,7 @@ const ExcerciseList = ({ exercises }) => {
           title="How to do this workout?"
         />
       </div>
-      <h3 className="exercise-list__workout-title">
-        {exercise.name} 
-      </h3>
+      <h3 className="exercise-list__workout-title">{exercise.name}</h3>
       <div className="exercise-list__inputs">
         <div className="exercise-list__input-field">
           <label

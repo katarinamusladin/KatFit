@@ -33,7 +33,7 @@ const DaysSection = forwardRef((props, ref) => {
                   key={day.id}
                   src={`/images/${day.image}`}
                   text={day.target_area}
-                  label= {day.name}
+                  label={day.name}
                   path={`/day/${day.id}`}
                 />
               ))}
@@ -43,8 +43,6 @@ const DaysSection = forwardRef((props, ref) => {
       </div>
     </>
   );
-
 });
 
 export default DaysSection;
-

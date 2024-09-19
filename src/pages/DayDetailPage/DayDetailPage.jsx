@@ -1,12 +1,13 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import HeroSection from '../../components/HeroSection/HeroSection';
-import './DayDetailPage.scss';
-import ExcercisesSection from '../../components/ExcercisesSection/ExcercisesSection';
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import HeroSection from "../../components/HeroSection/HeroSection";
+import "./DayDetailPage.scss";
+import ExcercisesSection from "../../components/ExcercisesSection/ExcercisesSection";
 
-
-const API_URL = `${import.meta.env.VITE_BASE_URL}:${import.meta.env.VITE_PORT}/days`;
+const API_URL = `${import.meta.env.VITE_BASE_URL}:${
+  import.meta.env.VITE_PORT
+}/days`;
 
 export default function DayDetailPage() {
   const { dayId } = useParams();
@@ -18,7 +19,6 @@ export default function DayDetailPage() {
     3: "GLUTES",
     4: "HIIT CARDIO",
     5: "FULL BODY",
-    
   };
 
   useEffect(() => {
@@ -30,24 +30,24 @@ export default function DayDetailPage() {
         console.error("Error fetching day data:", error);
       }
     }
-    	console.log(dayData);
+    console.log(dayData);
     fetchDayData();
   }, [dayId]);
 
   if (!dayData) {
     return <div>Loading...</div>;
   }
-  const isVideo = dayData.image.endsWith('.mp4');
+  const isVideo = dayData.image.endsWith(".mp4");
   return (
     <>
       <HeroSection
         heading={dayData.name}
         text={dayDescriptions[dayId]}
-        mediaSrc={`/images/${dayData.image}`} 
-        isVideo={isVideo} 
+        mediaSrc={`/images/${dayData.image}`}
+        isVideo={isVideo}
       />
-     
-         <ExcercisesSection exercises={dayData.exercises} />
+
+      <ExcercisesSection exercises={dayData.exercises} />
     </>
   );
 }
