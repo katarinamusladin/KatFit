@@ -127,7 +127,7 @@ KatFit is primarily designed for my personal use. As the sole user, I will utili
 "weight": 345,
 "image": "goblet-squat.jpg",
 "video_url": "https://www.youtube.com/embed/pEGfGwp6IEA?si=VPod2jWtvqiZhkNS"
-},...
+},... ] }
 ```
 
 **PUT /exercises/{exercise_id}** : Update details of an excercise (e.g., changing value of sets, reps, weight)
