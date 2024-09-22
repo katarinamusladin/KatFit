@@ -162,6 +162,7 @@ const ExcerciseList = ({ exercises, dayId }) => {
         <div
           className="exercise-list__completed-status"
           onClick={() => handleComplete(exercise.id)}
+           title="CLICK IF YOU COMPLETED WORKOUT"
         >
           <span className="exercise-list__checkmark"></span>
         </div>
