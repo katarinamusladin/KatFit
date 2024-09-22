@@ -3,7 +3,7 @@ import ExcerciseList from '../ExcerciseList/ExcerciseList';
 import './ExcercisesSection.scss';
 
 const ExcercisesSection = ({ exercises, someDayId }) => {
-  console.log('someDayId in ExcercisesSection:', someDayId); // Debugging line
+  
   return (
     <div className="exercises-section">
       <ExcerciseList exercises={exercises} dayId={someDayId} />

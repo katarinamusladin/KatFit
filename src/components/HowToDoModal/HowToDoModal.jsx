@@ -10,7 +10,7 @@ const HowToDoModal = ({ isOpen, handleClose, videoUrl }) => {
       <div className="modal__overlay" onClick={handleClose}></div>
       <div className="modal__content">
         <FaTimes className="modal__close" onClick={handleClose} />
-        <h2 className="modal__title">Workout Explanation</h2>
+        <h2 className="modal__title">Check out this video!</h2>
         <div className="modal__video">
           <iframe src={videoUrl} title="Workout Video"></iframe>
         </div>

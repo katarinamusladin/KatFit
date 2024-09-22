@@ -37,12 +37,14 @@
     display: flex;
     flex: 1;
     justify-content: center;
-    // margin: 0 1rem;
     border-radius: 0.625rem;
     padding: 1rem;
 
     @include tablet {
-      margin-bottom: 2rem;
+      margin: 1rem 10rem;
+    }
+    @include desktop{
+      margin: 2rem 0rem;
     }
 
     &__link {

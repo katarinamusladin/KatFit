@@ -11,14 +11,13 @@ const API_URL = `${import.meta.env.VITE_BASE_URL}:${
 
 export default function DayDetailPage() {
   const { dayId } = useParams();
-  console.log('Retrieved dayId:', dayId); 
   const [dayData, setDayData] = useState(null);
 
   const exercisesRef = useRef(null);
 
   const scrollToExercises = () => {
     if (exercisesRef.current) {
-      exercisesRef.current.scrollIntoView({ behavior: 'smooth' });
+      exercisesRef.current.scrollIntoView({ behavior: "smooth" });
     } else {
       console.error("exercisesRef.current is null");
     }
@@ -41,7 +40,7 @@ export default function DayDetailPage() {
         console.error("Error fetching day data:", error);
       }
     }
-    console.log(dayData);
+
     fetchDayData();
   }, [dayId]);
 
@@ -58,8 +57,8 @@ export default function DayDetailPage() {
         isVideo={isVideo}
         onButtonClick={scrollToExercises}
       />
-       <div ref={exercisesRef}>
-      <ExcercisesSection exercises={dayData.exercises}someDayId={dayId} />
+      <div ref={exercisesRef}>
+        <ExcercisesSection exercises={dayData.exercises} someDayId={dayId} />
       </div>
     </>
   );

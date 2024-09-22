@@ -15,7 +15,8 @@ const ExcerciseList = ({ exercises, dayId }) => {
   const [exerciseData, setExerciseData] = useState(exercises);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [videoUrl, setVideoUrl] = useState('');
+  const [videoUrl, setVideoUrl] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -47,17 +48,19 @@ const ExcerciseList = ({ exercises, dayId }) => {
 
   const handleSave = async (exercise) => {
     const url = `${API_URL}/${dayId}/exercises/${exercise.id}`;
-    
+
     const exerciseDataToUpdate = {
       sets: exercise.sets,
       reps: exercise.reps,
-      weight: exercise.weight 
+      weight: exercise.weight,
     };
-  
-    console.log("Sending PUT request to:", url, "with data:", exerciseDataToUpdate);
-    
+
     try {
       const response = await axios.put(url, exerciseDataToUpdate);
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 2000);
       console.log("Exercise updated successfully:", response.data);
     } catch (error) {
       console.error("Error updating exercise:", error);
@@ -82,15 +85,13 @@ const ExcerciseList = ({ exercises, dayId }) => {
     setIsModalOpen(false);
   };
 
- 
-
   const renderExerciseCard = (exercise) => (
     <div
-    className={`exercise-list__card ${
-      exercise.completed ? "exercise-list__card--completed" : ""
-    }`}
-    key={exercise.id}
-  >
+      className={`exercise-list__card ${
+        exercise.completed ? "exercise-list__card--completed" : ""
+      }`}
+      key={exercise.id}
+    >
       <div className="exercise-list__image-container">
         <img
           src={`/images/${exercise.image}`}
@@ -100,7 +101,7 @@ const ExcerciseList = ({ exercises, dayId }) => {
         <FaInfoCircle
           className="exercise-list__info-icon"
           title="How to do this workout?"
-          onClick={() => openModal(exercise.video_url)} 
+          onClick={() => openModal(exercise.video_url)}
         />
       </div>
       <h3 className="exercise-list__workout-title">{exercise.name}</h3>
@@ -158,14 +159,26 @@ const ExcerciseList = ({ exercises, dayId }) => {
             className="exercise-list__input"
           />
         </div>
-        <div className="exercise-list__completed-status" onClick={() => handleComplete(exercise.id)}>
+        <div
+          className="exercise-list__completed-status"
+          onClick={() => handleComplete(exercise.id)}
+        >
           <span className="exercise-list__checkmark"></span>
         </div>
       </div>
       <div className="exercise-list__save-button">
-        <button type="button" className="exercise-list__button" onClick={() => handleSave(exercise)}>
+        <button
+          type="button"
+          className="exercise-list__button"
+          onClick={() => handleSave(exercise)}
+        >
           Save
         </button>
+        {showMessage && (
+          <div className="exercise-list__alert">
+            INFO UPDATED!
+          </div>
+        )}
       </div>
     </div>
   );
@@ -182,7 +195,11 @@ const ExcerciseList = ({ exercises, dayId }) => {
           {exerciseData.map((exercise) => renderExerciseCard(exercise))}
         </div>
       )}
-       <HowToDoModal isOpen={isModalOpen} handleClose={closeModal} videoUrl={videoUrl} />
+      <HowToDoModal
+        isOpen={isModalOpen}
+        handleClose={closeModal}
+        videoUrl={videoUrl}
+      />
     </section>
   );
 };
