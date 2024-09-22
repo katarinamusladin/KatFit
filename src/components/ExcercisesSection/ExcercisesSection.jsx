@@ -2,10 +2,11 @@ import React from 'react';
 import ExcerciseList from '../ExcerciseList/ExcerciseList';
 import './ExcercisesSection.scss';
 
-const ExcercisesSection = ({ exercises }) => {
+const ExcercisesSection = ({ exercises, someDayId }) => {
+  console.log('someDayId in ExcercisesSection:', someDayId); // Debugging line
   return (
     <div className="exercises-section">
-      <ExcerciseList exercises={exercises} />
+      <ExcerciseList exercises={exercises} dayId={someDayId} />
     </div>
   );
 };

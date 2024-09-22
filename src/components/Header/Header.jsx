@@ -30,7 +30,11 @@ function Header() {
         <div className="navbar__container">
           <Link to="/" className="navbar__logo" onClick={closeMobileMenu}>
             KatFit
-            <img src={flowerIcon} alt="Flower icon" className="navbar__flower-icon" />
+            <img
+              src={flowerIcon}
+              alt="Flower icon"
+              className="navbar__flower-icon"
+            />
           </Link>
           <div className="navbar__menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
@@ -43,11 +47,6 @@ function Header() {
             <li className="navbar__item">
               <Link to="/" className="navbar__links" onClick={closeMobileMenu}>
                 Home
-              </Link>
-            </li>
-            <li className="navbar__item">
-              <Link to="/" className="navbar__links" onClick={closeMobileMenu}>
-                Schedule
               </Link>
             </li>
             <li className="navbar__item">

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import HeroSection from "../../components/HeroSection/HeroSection";
 import "./DayDetailPage.scss";
@@ -11,7 +11,18 @@ const API_URL = `${import.meta.env.VITE_BASE_URL}:${
 
 export default function DayDetailPage() {
   const { dayId } = useParams();
+  console.log('Retrieved dayId:', dayId); 
   const [dayData, setDayData] = useState(null);
+
+  const exercisesRef = useRef(null);
+
+  const scrollToExercises = () => {
+    if (exercisesRef.current) {
+      exercisesRef.current.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.error("exercisesRef.current is null");
+    }
+  };
 
   const dayDescriptions = {
     1: "LEG DAY",
@@ -45,9 +56,11 @@ export default function DayDetailPage() {
         text={dayDescriptions[dayId]}
         mediaSrc={`/images/${dayData.image}`}
         isVideo={isVideo}
+        onButtonClick={scrollToExercises}
       />
-
-      <ExcercisesSection exercises={dayData.exercises} />
+       <div ref={exercisesRef}>
+      <ExcercisesSection exercises={dayData.exercises}someDayId={dayId} />
+      </div>
     </>
   );
 }

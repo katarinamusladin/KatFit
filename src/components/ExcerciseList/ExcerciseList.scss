@@ -119,6 +119,16 @@
     position: relative;
     margin: 0.625rem 0.625rem;
 
+    &--completed {
+      background-color: darken($header, 10%);
+      box-shadow: 0 0.5rem 1rem rgba($header, 0.5);
+      transition: background-color 0.3s, box-shadow 0.3s;
+
+      .exercise-list__workout-title {
+        text-decoration: line-through;
+      }
+    }
+
     @include tablet {
       width: 40%;
     }
@@ -178,6 +188,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    font-size: .8125rem; //font size for labels
   }
 
   &__input-label {
@@ -191,27 +202,42 @@
     border-radius: 1.25rem;
     font-size: 0.75rem;
     width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__status-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    gap: 0.625rem;
   }
 
   &__completed-status {
     display: flex;
     align-items: center;
     font-size: 0.75rem;
+    width: 50%;
+  }
+  &__checkmark {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: $header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    font-size: 1rem;
+    cursor: pointer;
 
-    &__label {
-      margin-right: 0.3125rem;
-      color: red;
+    &:before {
+      content: "\2713";
     }
-
-    &__checkmark {
-      color: red;
-      font-size: 1rem;
+    &:hover {
+      background-color: $light-pink;
+      color: $white;
     }
   }
 
@@ -238,9 +264,9 @@
     }
   }
 
-  &__flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  // &__flex {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   justify-content: center;
+  // }
 }

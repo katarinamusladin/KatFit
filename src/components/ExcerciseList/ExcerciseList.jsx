@@ -5,14 +5,18 @@ import { FaInfoCircle } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import HowToDoModal from "../HowToDoModal/HowToDoModal";
 
 const API_URL = `${import.meta.env.VITE_BASE_URL}:${
   import.meta.env.VITE_PORT
 }/days`;
 
-const ExcerciseList = ({ exercises }) => {
+const ExcerciseList = ({ exercises, dayId }) => {
+  console.log("Received dayId:", dayId);
   const [exerciseData, setExerciseData] = useState(exercises);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState('');
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,15 +36,14 @@ const ExcerciseList = ({ exercises }) => {
     );
   };
 
-  const handleSubmit = async (e, id) => {
-    e.preventDefault();
-    const updatedExercise = exerciseData.find((exercise) => exercise.id === id);
-    try {
-      await axios.put(`${API_URL}/exercises/${id}`, updatedExercise);
-      alert("Exercise updated successfully!");
-    } catch (error) {
-      console.error("Error updating exercise:", error);
-    }
+  const handleComplete = (id) => {
+    setExerciseData((prevData) =>
+      prevData.map((exercise) =>
+        exercise.id === id
+          ? { ...exercise, completed: !exercise.completed }
+          : exercise
+      )
+    );
   };
 
   const settings = {
@@ -52,8 +55,23 @@ const ExcerciseList = ({ exercises }) => {
     centerMode: true,
   };
 
+  const openModal = (video) => {
+    setVideoUrl(video);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const renderExerciseCard = (exercise) => (
-    <div className="exercise-list__card" key={exercise.id}>
+    // <div className="exercise-list__card" key={exercise.id}>
+    <div
+    className={`exercise-list__card ${
+      exercise.completed ? "exercise-list__card--completed" : ""
+    }`}
+    key={exercise.id}
+  >
       <div className="exercise-list__image-container">
         <img
           src={`/images/${exercise.image}`}
@@ -63,6 +81,7 @@ const ExcerciseList = ({ exercises }) => {
         <FaInfoCircle
           className="exercise-list__info-icon"
           title="How to do this workout?"
+          onClick={() => openModal(exercise.video_url)} 
         />
       </div>
       <h3 className="exercise-list__workout-title">{exercise.name}</h3>
@@ -120,17 +139,12 @@ const ExcerciseList = ({ exercises }) => {
             className="exercise-list__input"
           />
         </div>
-        <div className="exercise-list__completed-status">
-          <p>COMPLETED?</p>
+        <div className="exercise-list__completed-status" onClick={() => handleComplete(exercise.id)}>
           <span className="exercise-list__checkmark"></span>
         </div>
       </div>
       <div className="exercise-list__save-button">
-        <button
-          type="button"
-          onClick={(e) => handleSubmit(e, exercise.id)}
-          className="exercise-list__button"
-        >
+        <button type="button" className="exercise-list__button">
           Save
         </button>
       </div>
@@ -149,6 +163,7 @@ const ExcerciseList = ({ exercises }) => {
           {exerciseData.map((exercise) => renderExerciseCard(exercise))}
         </div>
       )}
+       <HowToDoModal isOpen={isModalOpen} handleClose={closeModal} videoUrl={videoUrl} />
     </section>
   );
 };
