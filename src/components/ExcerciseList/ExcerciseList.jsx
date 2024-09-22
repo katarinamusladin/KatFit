@@ -16,7 +16,7 @@ const ExcerciseList = ({ exercises, dayId }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
-  const [showMessage, setShowMessage] = useState(false);
+  const [updatedExerciseId, setUpdatedExerciseId] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,9 +57,9 @@ const ExcerciseList = ({ exercises, dayId }) => {
 
     try {
       const response = await axios.put(url, exerciseDataToUpdate);
-      setShowMessage(true);
+      setUpdatedExerciseId(exercise.id);
       setTimeout(() => {
-        setShowMessage(false);
+        setUpdatedExerciseId(null);
       }, 2000);
       console.log("Exercise updated successfully:", response.data);
     } catch (error) {
@@ -174,10 +174,8 @@ const ExcerciseList = ({ exercises, dayId }) => {
         >
           Save
         </button>
-        {showMessage && (
-          <div className="exercise-list__alert">
-            INFO UPDATED!
-          </div>
+        {updatedExerciseId === exercise.id && (
+          <div className="exercise-list__alert">INFO UPDATED!</div>
         )}
       </div>
     </div>
