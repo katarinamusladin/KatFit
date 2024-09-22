@@ -12,7 +12,6 @@ const API_URL = `${import.meta.env.VITE_BASE_URL}:${
 }/days`;
 
 const ExcerciseList = ({ exercises, dayId }) => {
-  console.log("Received dayId:", dayId);
   const [exerciseData, setExerciseData] = useState(exercises);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,6 +45,25 @@ const ExcerciseList = ({ exercises, dayId }) => {
     );
   };
 
+  const handleSave = async (exercise) => {
+    const url = `${API_URL}/${dayId}/exercises/${exercise.id}`;
+    
+    const exerciseDataToUpdate = {
+      sets: exercise.sets,
+      reps: exercise.reps,
+      weight: exercise.weight 
+    };
+  
+    console.log("Sending PUT request to:", url, "with data:", exerciseDataToUpdate);
+    
+    try {
+      const response = await axios.put(url, exerciseDataToUpdate);
+      console.log("Exercise updated successfully:", response.data);
+    } catch (error) {
+      console.error("Error updating exercise:", error);
+    }
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -64,8 +82,9 @@ const ExcerciseList = ({ exercises, dayId }) => {
     setIsModalOpen(false);
   };
 
+ 
+
   const renderExerciseCard = (exercise) => (
-    // <div className="exercise-list__card" key={exercise.id}>
     <div
     className={`exercise-list__card ${
       exercise.completed ? "exercise-list__card--completed" : ""
@@ -124,7 +143,7 @@ const ExcerciseList = ({ exercises, dayId }) => {
       <div className="exercise-list__status-wrapper">
         <div className="exercise-list__input-field">
           <label
-            htmlFor={`weights-${exercise.id}`}
+            htmlFor={`weight-${exercise.id}`}
             className="exercise-list__label"
           >
             Weights
@@ -133,8 +152,8 @@ const ExcerciseList = ({ exercises, dayId }) => {
             type="number"
             id={`weights-${exercise.id}`}
             placeholder="Weight"
-            name="weights"
-            value={exercise.weights || ""}
+            name="weight"
+            value={exercise.weight || ""}
             onChange={(e) => handleChange(e, exercise.id)}
             className="exercise-list__input"
           />
@@ -144,7 +163,7 @@ const ExcerciseList = ({ exercises, dayId }) => {
         </div>
       </div>
       <div className="exercise-list__save-button">
-        <button type="button" className="exercise-list__button">
+        <button type="button" className="exercise-list__button" onClick={() => handleSave(exercise)}>
           Save
         </button>
       </div>
