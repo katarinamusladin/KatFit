@@ -60,7 +60,7 @@ const ExcerciseList = ({ exercises, dayId }) => {
       setUpdatedExerciseId(exercise.id);
       setTimeout(() => {
         setUpdatedExerciseId(null);
-      }, 2000);
+      }, 1500);
       console.log("Exercise updated successfully:", response.data);
     } catch (error) {
       console.error("Error updating exercise:", error);
