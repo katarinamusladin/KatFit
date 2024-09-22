@@ -88,17 +88,17 @@ KatFit is primarily designed for my personal use. As the sole user, I will utili
 - `RESPONSE:`
 ```
 {
-    "id": 1,
-    "name": "Day 1",
-    "target_area": "Legs",
-    "image": "path-to-target-image"
+"id": 1,
+"name": "Day 1",
+"target_area": "Legs",
+"image": "legs-image.jpg"
 },
 {
-    "id": 2,
-    "name": "Day 2",
-    "target_area": "Upper Body",
-    "image": "path-to-image"
-}
+"id": 2,
+"name": "Day 2",
+"target_area": "Upper Body",
+"image": "upper-body-image.jpg"
+},..
 ```
 
 **GET /days/{day_id}** : Fetch details of a specific workout day, including the exercises.
@@ -106,42 +106,28 @@ KatFit is primarily designed for my personal use. As the sole user, I will utili
 - `RESPONSE:`
 ```
 {
-  "id": 1,
-  "name": "Day 1",
-  "target_area": "Legs",
-  "image": "path-to-target-image",
-  "exercises": [
-    {
-      "id": 1,
-      "name": "Squats",
-      "sets": 3,
-      "reps": 10,
-      "weight": 60,
-      "image": "path-to-exercise-image",
-      "video_url": "url-to-video"
-    },
-    {
-      "id": 2,
-      "name": "Lunges",
-      "sets": 3,
-      "reps": 12,
-      "weight": 0,
-      "image": "path-to-exercise-image",
-      "video_url": "url-to-video"
-    }
-  ]
-}
-```
-
-**POST /completed_workouts** : Mark workout day as complete
-- `PARAMETERS:` **None**
-- `RESPONSE:`
-```
+"id": 1,
+"name": "Day 1",
+"image": "legs-image.jpg",
+"exercises": [
 {
-  "id": 1,
-  "day_id": 1,
-  "completed_at": "2024-09-10T12:34:56Z"
-}
+"id": 1,
+"name": "Goblet Pause Squat",
+"sets": 4,
+"reps": 102,
+"weight": 34,
+"image": "goblet-pause-squat.jpg",
+"video_url": "https://www.youtube.com/embed/8jeMsehQJK0?si=37Odhhqy6TbxzavM"
+},
+{
+"id": 2,
+"name": "Goblet Squat",
+"sets": 3,
+"reps": 1299,
+"weight": 345,
+"image": "goblet-squat.jpg",
+"video_url": "https://www.youtube.com/embed/pEGfGwp6IEA?si=VPod2jWtvqiZhkNS"
+},... ] }
 ```
 
 **PUT /exercises/{exercise_id}** : Update details of an excercise (e.g., changing value of sets, reps, weight)
