@@ -5,7 +5,10 @@ $mobile-breakpoint: 960px;
 
 //colors
 $white: #fff;
+$border-color: #ddd;
 $dark-grey: #242424;
 $header: #a88898;
+$light-pink: #c4a9a7;
+$header-light: lighten($header,35%);
 $shadow-color: #387DFF2B;
 $drop-shadow-color: #387DFF02;

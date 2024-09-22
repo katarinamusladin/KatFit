@@ -1,0 +1,297 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.exercise-list {
+  padding: 1.25rem;
+  background-color: $header-light;
+  text-align: center;
+  position: relative;
+
+  &__title {
+    margin-bottom: 1.25rem;
+    font-size: 1.8rem;
+    padding-top: 2rem;
+    color: $header;
+  }
+  &__button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 1.25rem;
+    background-color: $header;
+    color: $white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 90%;
+
+    &:hover {
+      background-color: $white;
+      border: 0.125rem solid $header;
+      color: $header;
+    }
+  }
+
+  &__slider {
+    position: relative;
+    overflow: hidden;
+
+    .slick-slide {
+      display: flex;
+      justify-content: center;
+      padding: 0.625rem;
+      margin-bottom: 1rem;
+
+      @include tablet {
+        margin: 80px;
+      }
+    }
+
+    .slick-track {
+      display: flex;
+      align-items: center;
+    }
+
+    .slick-dots {
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      right: 0;
+      width: 100%;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: inline-block;
+        margin: 0 0.3125rem;
+      }
+
+      button {
+        background-color: $light-pink;
+        border-radius: 50%;
+        width: 0.625rem;
+        height: 0.625rem;
+        padding: 0;
+        margin: 0;
+
+        &:before {
+          font-size: 0;
+        }
+      }
+
+      .slick-active button {
+        background-color: $header;
+      }
+    }
+
+    @include tablet {
+      display: block;
+      .slick-slide {
+        flex: 1;
+      }
+      .slick-track,
+      .slick-dots {
+        display: none;
+      }
+    }
+
+    @include desktop {
+      display: block;
+      .slick-slide {
+        flex: 1;
+      }
+      .slick-track,
+      .slick-dots {
+        display: none;
+      }
+    }
+  }
+
+  &__card {
+    background-color: $white;
+    border: 0.0625rem solid $border-color;
+    border-radius: 1.25rem;
+    padding: 0.625rem;
+    width: 25%;
+    box-shadow: 0 0.25rem 0.5rem rgba($header, 0.3);
+    text-align: left;
+    position: relative;
+    margin: 0.625rem 0.625rem;
+    flex: 1 1 calc(33.333% - 1rem); 
+  max-width: 400px; 
+
+  @include tablet {
+    flex: 1 1 calc(50% - 1rem); // Two cards per row on tablet
+  }
+
+  @include desktop {
+    flex: 1 1 calc(25% - 1rem); // Four cards per row on desktop
+  }
+
+    &--completed {
+      background-color: darken($header, 10%);
+      box-shadow: 0 0.5rem 1rem rgba($header, 0.5);
+      transition: background-color 0.3s, box-shadow 0.3s;
+
+      .exercise-list__workout-title {
+        text-decoration: line-through;
+      }
+    }
+
+    @include tablet {
+      width: 40%;
+    }
+
+    @include desktop {
+      width: 30%;
+    }
+  }
+
+  &__image-container {
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 1.25rem;
+    margin-bottom: 0.625rem;
+  }
+
+  &__info-icon {
+    position: absolute;
+    top: -0.1875rem;
+    right: -0.1875rem;
+    width: 1.8125rem;
+    height: 1.8125rem;
+    background-color: $header;
+    color: $white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+      background-color: $white;
+      color: $header;
+    }
+  }
+
+  &__workout-title {
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
+    color: $dark-grey;
+  }
+
+  &__inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.625rem;
+    margin-bottom: 0.9375rem;
+  }
+
+  &__input-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: .8125rem; //font size for labels
+  }
+
+  &__input-label {
+    font-size: 0.75rem;
+    margin-bottom: 0.3125rem;
+  }
+
+  &__input {
+    padding: 0.375rem;
+    border: 0.125rem solid $header;
+    border-radius: 1.25rem;
+    font-size: 0.75rem;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__status-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.625rem;
+  }
+
+  &__completed-status {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    width: 50%;
+  }
+  &__checkmark {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: $header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:before {
+      content: "\2713";
+    }
+    &:hover {
+      background-color: $light-pink;
+      color: $white;
+    }
+  }
+
+  &__save-button {
+    text-align: center;
+    padding-top: 16px;
+
+    &__button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 1.25rem;
+      background-color: $header;
+      color: $white;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 90%;
+
+      &:hover {
+        background-color: $white;
+        border: 0.125rem solid $header;
+        color: $header;
+      }
+    }
+  }
+
+  &__grid {
+    display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 1rem; 
+
+  @include tablet {
+    flex-direction: row; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+  }
+
+  @include desktop {
+    flex-direction: row;
+    max-width: 1200px; 
+    margin: 0 auto;
+  }
+  }
+}
+
+

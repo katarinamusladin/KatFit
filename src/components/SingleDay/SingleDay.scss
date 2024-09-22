@@ -4,11 +4,13 @@
 
 .cards {
   padding: 2rem;
-  background: $white;
+  background: $header-light;
 
   &__title {
     text-align: center;
     padding-top: 2rem;
+    font-size: 1.8rem;
+    color: $header;
   }
 
   &__container {

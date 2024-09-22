@@ -21,10 +21,17 @@
     max-width: 93.75rem;
   }
 
+  &__flower-icon{
+    width: 2.5rem; 
+    height: auto;
+    margin-left: .25rem; 
+    vertical-align: middle; 
+  }
+
   &__logo {
-    color: #fff;
+    color: $white;
+    font-weight: 600;
     justify-self: start;
-    margin-left: 1.25rem;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
